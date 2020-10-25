@@ -35,6 +35,10 @@ IaaS, PaaS 제품군 리스팅
 * 유용한 SCHEMA 변경.
 * Region 선택 가능. (Primary region - read & write, Secondary region (Optional) - read only)
 
+```
+az storage table --help
+```
+
 > Table Storage vs Cosmos DB
 > * Table Storage                   &    Comsmos DB 
 > * pk look up only                 & secondary index support
@@ -48,3 +52,11 @@ IaaS, PaaS 제품군 리스팅
 * 파티션 키는 데이터를 그룹하는 데 사용. (group by partition key)
 * 쿼리 성능 개선을 위해 사용. => partition key 와 row key 을 제공해야 원하는 데이터를 쿼리 가능.
 * 파티션 키를 이용해 데이터의 물리적 저장 위치가 결정. (스파크 parquet 와 비슷)
+
+### Migration from Table Storage to Cosmos DB
+https://github.com/azure/azure-documentdb-datamigrationtool
+
+## Azure Cosmos DB
+```
+az cosmosdb
+```
