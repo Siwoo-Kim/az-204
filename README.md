@@ -47,14 +47,33 @@ az storage table --help
 > * geo replication restricted      & geo replication not restricted
 > * cheap                           & expensive
 
-### Partitioning schemas - Azure Table Storage
+### Azure Table Storage - Partitioning schemas
 * Table 은 복수의 파티션 키를 가진다.
 * 파티션 키는 데이터를 그룹하는 데 사용. (group by partition key)
 * 쿼리 성능 개선을 위해 사용. => partition key 와 row key 을 제공해야 원하는 데이터를 쿼리 가능.
 * 파티션 키를 이용해 데이터의 물리적 저장 위치가 결정. (스파크 parquet 와 비슷)
 
-### Migration from Table Storage to Cosmos DB
+### Azure Table Storage -  Migration from Table Storage to Cosmos DB
 https://github.com/azure/azure-documentdb-datamigrationtool
+
+### Azure Table Storage - Applying and Enforcing Table Policies
+테이블에 특정 클라이언트 (third-party) 에게 접근 허용하는 정책 수립 가능.
+이후 Azure Storage API 을 이용해 지정한 "identifier" 을 통해 SAS 토근 생성.
+
+1. 테이블에서 Policy 추가.
+2. Policy 에 대한 identifier 추가.
+3. 퍼미션 (읽기, 쓰기, 업데이트, 삭제) 추가.
+4. start & end time 추가.
+
+### Azure Table Storage - Exporting Metrics
+Metrics -> Share -> Export as csv <br>
+혹은 메트릭들 $Metric 테이블에 모두 저장됨.
+
+
+* Table Capacity (테이블 수용력)
+* Table Entity Count (로우 갯수)
+* Success E2E Latency (End to End 지연시간)
+
 
 ## Azure Cosmos DB
 ```

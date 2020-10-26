@@ -1,4 +1,5 @@
 .idea
 */target
 
-*/application.properites
+*/azapplication.properites
+*.iml
