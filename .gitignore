@@ -1,5 +1,10 @@
 .idea
 */target
 
-*/azapplication.properites
+*/application.properites
 *.iml
+
+.mvn
+mvnw
+mvnw.cmd
+test

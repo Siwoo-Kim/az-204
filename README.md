@@ -21,6 +21,61 @@ https://azurecitadel.com
 # Marketplace
 IaaS, PaaS 제품군 리스팅
 
+# Azure Fundamentals.
+* 클라우드 기반의 서비스를 제공. (인프라 혹은 플랫폼을 Azure 데이터 센터에서 운영)
+* Account 을 기반으로 애져에 접근.
+* Subscription 을 이용하여 사용자에게 Resource 의 접근 권한을 제공.
+* Resource 은 애져 서비스에서 소비 가능한 자원. eg) VM, Networking, App Services, Sql Server.. 
+
+> * IaaS = 개발자에게 물리적 리소스만 이용하여 앱을 개발할 수 있도록 서비스 제공. = VM
+> * PaaS = 클라우더는 개발자가 플랫폼 위에서(OS, Framework) 앱을 개발할 수 있는 서비스 제공. = MySql Server, Web Service
+
+##Azure Fundamentals - 구독 (Subscription)
+Subscription 을 이용하여 사용자에게 Resource 의 접근 권한을 제공.
+하나의 Account 에 여러 Subscriptions 보유할 수 있음.
+
+> * Azure free account
+> * Pay-As-You-Go
+> * Enterprise Agreements.
+
+##Azure Fundamentals. - Resources & Resource Manager
+Azure 에서 관리 가능한 모든 자원 아이템.
+모든 자원 아이템은 특정 Subscription 에 등록되어야 . <br>
+
+Resource Manager.
+> * 리소스를 그룹화.
+> * 배포 템플릿 빌드.
+> * 일관성있는 관리 레이어와 툴링 제공.
+> * Role 기반 access controls 제공.
+> *비용을 그룹화.
+
+<code>
+az group create -l $location -n $resource_group
+</code>
+
+##Azure Fundamentals. - Placing resources in Azure Regions
+Region 은 앱이 배포될 수 있는 애져 데이터 센터 집합을 의미.
+리소스 생성시 Region 을 선택해야 됨. <br>
+
+지역 선택시 고려 사항,
+> * Services Availability (해당 지역에 서비스 가용한가?)
+> * Redundancy (성능 향상, failover 을 위해 해당 서비스를 복제하여 다른 지역으로 복제 가능한가?)
+> * Latency (지연 시간이 허용 가능한 수치인가?)
+> * Producer / Consumer (이벤트 생성자와 소비자가 서로 가까이에 위치하는가?)
+
+# VM
+스케일 가능한 컴퓨팅 리소스.
+이미 인스턴스화 된 VM 을 이미지화하여 재사용 가능. <br>
+
+VM 구성요소.
+1. Image (OS and App installed)
+2. Networking (public? private?)
+3. Storage
+
+##VM - Provisioning VM
+##VM - Building and Deploying VM Images
+
+
 # Azure Storage
 
 ##Shared Access Signature (SAS)
@@ -69,13 +124,18 @@ https://github.com/azure/azure-documentdb-datamigrationtool
 Metrics -> Share -> Export as csv <br>
 혹은 메트릭들 $Metric 테이블에 모두 저장됨.
 
-
 * Table Capacity (테이블 수용력)
 * Table Entity Count (로우 갯수)
 * Success E2E Latency (End to End 지연시간)
-
 
 ## Azure Cosmos DB
 ```
 az cosmosdb
 ```
+
+### Securing Data (데이터 보호하기)
+1. Managed Service Identity
+2. Azure SQL Database
+3. Azure Storage Service Encryption
+4. Azure Disk Encryption
+5. SSL/TLS
