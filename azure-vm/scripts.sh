@@ -1,3 +1,4 @@
+#!/bin/bash
 az group create -l $location -n $resource_group
 #리소스 그룹 생성
 az group list -o table
@@ -38,12 +39,22 @@ az vm create -n $vm1 \
   -l $location  \
   --image ubuntults  \
   --size Standard_B1ms \
-  --nics $nic1
+  --nics $nic1  \
   --admin-username $admin_username  \
   --admin-password $admin_pw  \
   --authentication-type ssh \
   --ssh-key-values ~/.ssh/id_rsa.pub
 #VM 생성
+
+az vm create -n $vm1 \
+  -g $resource_group  \
+  -l $location  \
+  --image ubuntults  \
+  --size Standard_B1ms \
+  --admin-username $admin_username  \
+  --authentication-type ssh \
+  --ssh-key-values ~/.ssh/id_rsa.pub
+#VM 생성, 간단 버전
 
 az vm list-ip-addresses -o table
 #VM 아이피 확인

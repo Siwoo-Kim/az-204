@@ -4,6 +4,8 @@
 */application.properites
 *.iml
 
+.mvn/*
+
 .mvn
 mvnw
 mvnw.cmd

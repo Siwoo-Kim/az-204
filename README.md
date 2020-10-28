@@ -51,6 +51,7 @@ Resource Manager.
 
 <code>
 az group create -l $location -n $resource_group
+az resource list -n $vm1 -o table
 </code>
 
 ##Azure Fundamentals. - Placing resources in Azure Regions
@@ -72,10 +73,24 @@ VM 구성요소.
 2. Networking (public? private?)
 3. Storage
 
+- Deallocate : 가상 머신을 하드 디스크에서 완전히 해제함.
+- Deprovision (waagent) : 가상 머신을 일반화 시킴 (기계의 정보, 유저 정보 제거). 이미지 생성시 사용.
+
 ##VM - Provisioning VM
+Based 이미지를 이용해 가상 머신을 생성. (IaasS 서비스)
+
+<code>az vm create</code>
+
 ##VM - Building and Deploying VM Images
+이미지: 미리 설치된 OS, 앱과 서비스 패키지. <br/>
+커스텀 이미지: 개발자가 개발에 필요한 앱과 서비스를 미리 설치환 패키지. <br/>
+커스텀 이미지를 이용해 다른 vm 생성시 사용할 수 있음. <br/>
+커시텀 이미지는 Region 별로 독립적이라 다른 Region 에서 사용시 copy 해야 됨. <br/> 
 
-
+커스텀 이미지 생성 방법.
+1. 다른 이미지로부터 생성 이후 앱을 설치한 뒤 해당 VM 에서 Deprovision  (waagent) 실행.
+2. 가상 하드 디스크를 로컬 VM 으로부터 업로드하여 생성. 
+ 
 # Azure Storage
 
 ##Shared Access Signature (SAS)
