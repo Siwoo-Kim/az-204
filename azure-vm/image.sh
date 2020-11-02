@@ -20,18 +20,17 @@ az image list -o table
 
 #이미지로부터 vm 생성
 az vm create -n $vm2 \
-  -g $resource_group  \
-  -l $location  \
-  --image $image1  \
-  --admin-username $admin_username  \
+  -g $resource_group \
+  -l $location \
+  --image $image1 \
+  --admin-username $admin_username \
   --authentication-type ssh \
   --ssh-key-values ~/.ssh/id_rsa.pub
 
 #다른 Region 으로 이미지 복제하기.
 az extension add --name image-copy-extension
-az image copy --source-object-name $image1  \
+az image copy --source-object-name $image1 \
   --source-resource-group $resource_group \
   --target-location $location2 \
   --target-resource-group $resource_group2 \
   --target-name $image2 --cleanup
-

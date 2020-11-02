@@ -5,17 +5,17 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Delegate;
+
 import java.util.Date;
 
 /**
- * TableServiceEntity
- *  => 테이블의 엔티티의 프로퍼티 이름은 대문자로 시작해야 한다.
- *
- * PartitionKey (파티셔닝), Row Key (PK) 을 지정하기.
- * 1. 프록시를 만든다.
- * 2. PartitionKey 에 그룹화할 프러퍼티, RowKey 에 PK 로 사용할 프러퍼티를 지정한다.
+ * TableServiceEntity => 테이블의 엔티티의 프로퍼티 이름은 대문자로 시작해야 한다.
+ * <p>
+ * PartitionKey (파티셔닝), Row Key (PK) 을 지정하기. 1. 프록시를 만든다. 2. PartitionKey 에 그룹화할 프러퍼티, RowKey 에 PK 로 사용할 프러퍼티를 지정한다.
  */
-@Getter @Setter @ToString
+@Getter
+@Setter
+@ToString
 public class ToDo {
     private String id;
     private String type;

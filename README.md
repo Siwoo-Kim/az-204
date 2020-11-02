@@ -6,7 +6,7 @@
 2. Azure Compute (PaaS)
 3. Azure Storage 
 4. Azure Security
-5. Montior, troubleshoot and optimize solutions
+5. Monitor, troubleshoot and optimize solutions
 6. Connect Azure Services with third-party services.
 
 # 시작전
@@ -42,16 +42,34 @@ Subscription 을 이용하여 사용자에게 Resource 의 접근 권한을 제�
 Azure 에서 관리 가능한 모든 자원 아이템.
 모든 자원 아이템은 특정 Subscription 에 등록되어야 . <br>
 
-Resource Manager.
+<code>
+az group create -l $location -n $resource_group
+az resource list -n $vm1 -o table
+</code>
+
+Scope 
+Azure 은 4 가지 레벨의 스코프을 제공.
+
+1. Management groups ?
+2. Subscriptions
+3. Resource Groups
+4. Resources
+
+##Resource Manager.
 > * 리소스를 그룹화.
 > * 배포 템플릿 빌드.
 > * 일관성있는 관리 레이어와 툴링 제공.
 > * Role 기반 access controls 제공.
 > *비용을 그룹화.
 
+Azure Resource Manager Template
+> 복수의 리소스 인스턴스 생성시 템플릿을 사용.
+> copy element & copyIndex for resource naming
+> https://github.com/Azure/azure-quickstart-templates
+
+
 <code>
-az group create -l $location -n $resource_group
-az resource list -n $vm1 -o table
+az group deployment create -g $resource_group --template-file ./az-template-spark.json --parameters @./az-template-spark-params.json
 </code>
 
 ##Azure Fundamentals. - Placing resources in Azure Regions
@@ -75,7 +93,10 @@ VM 구성요소.
 
 - Deallocate : 가상 머신을 하드 디스크에서 완전히 해제함.
 - Deprovision (waagent) : 가상 머신을 일반화 시킴 (기계의 정보, 유저 정보 제거). 이미지 생성시 사용.
-
+- Managed Disks : 스토리지 어카운트 없이 생성된 디스크 (vhd)
+- Snapshots : 읽기 전용 Managed Disks 의 카피.
+- Image : 일반화된 (Generalized) VM 인스턴스
+ 
 ##VM - Provisioning VM
 Based 이미지를 이용해 가상 머신을 생성. (IaasS 서비스)
 
@@ -154,3 +175,16 @@ az cosmosdb
 3. Azure Storage Service Encryption
 4. Azure Disk Encryption
 5. SSL/TLS
+
+### Azure Policy and Azure RBAC (애져 리소스에 대한 정책 및 규칙 정의 - 보안 정책이 아님)
+RBAC (Role based access control)
+- Focuses on what resources the users can access
+- 특정 리소스에 대해 유저가 접근, 혹은 어떠한 동작이 허용되는지를 지정.
+
+Azure Policy
+- Focuses on the properties of resources during deployment.
+- 유저가 리소스를 배포시에 적용되는 정책 
+- Builtin Azure Policy - Allowed locations (특정 region 에 배포), 
+VM SKUs (특정 지정된 size 의 VM 생성만 허용), Deploy MMS extension
+- Assignments - creating & assign policy
+- Definitions - collection of policies

@@ -16,26 +16,15 @@ import java.time.temporal.TemporalField;
 import java.util.*;
 
 /**
- * Azure Table Storage Component
- *  1. CloudStorageAccount
- *  2. CloudTableClient -> 복수의 테이블에 대한 action 수행.
- *  3. CloudTable -> 특정 테이블에 대한 action 수행.
- *  4. TableEntity, TableServiceEntity -> 테이블에 저장된 데이터 표현 클래스 (Entity)
- *  5. TableQuery -> 쿼리 오브젝트. (TableQuery.from)
- *  6. TableQuerySegment -> 쿼리된 데이터의 부분 집합. (페이징 기능)
- *  7. TableOperation  -> insert, update, merge, delete, replace or retrieve table entities
- *
- *  Table Storage 특징.
- *      1. 클래스 정의에 따른 프로퍼티가 없다 테이블에 새로 만들어진다.
- *
- *  Query Component
- *      1. TableQuery
- *          - 쿼리 표현 객체.
- *      2. TableQuery.QueryComparisons
- *          - 쿼리 where 절 조건시 비교 연산 (eq, neq, gt, lt)
-*       3. TableOperation
- *          - update, insert, merge, delete 연산
- *
+ * Azure Table Storage Component 1. CloudStorageAccount 2. CloudTableClient -> 복수의 테이블에 대한 action 수행. 3. CloudTable ->
+ * 특정 테이블에 대한 action 수행. 4. TableEntity, TableServiceEntity -> 테이블에 저장된 데이터 표현 클래스 (Entity) 5. TableQuery -> 쿼리 오브젝트.
+ * (TableQuery.from) 6. TableQuerySegment -> 쿼리된 데이터의 부분 집합. (페이징 기능) 7. TableOperation  -> insert, update, merge,
+ * delete, replace or retrieve table entities
+ * <p>
+ * Table Storage 특징. 1. 클래스 정의에 따른 프로퍼티가 없다 테이블에 새로 만들어진다.
+ * <p>
+ * Query Component 1. TableQuery - 쿼리 표현 객체. 2. TableQuery.QueryComparisons - 쿼리 where 절 조건시 비교 연산 (eq, neq, gt, lt) 3.
+ * TableOperation - update, insert, merge, delete 연산
  */
 public class ToDoRepository {
     private final AppProperties appProperties = AppProperties.INSTANCE;
@@ -77,8 +66,7 @@ public class ToDoRepository {
     }
 
     /**
-     * 1. Making a query
-     * 2. execute on the query
+     * 1. Making a query 2. execute on the query
      *
      * @return
      */
@@ -112,7 +100,7 @@ public class ToDoRepository {
         TableQuery<ToDo.AzureToDo> query = TableQuery.from(ToDo.AzureToDo.class);
         String f = TableQuery.generateFilterCondition("1",
                 TableQuery.QueryComparisons.EQUAL, 1);
-        for (String p: parameters.keySet()) {
+        for (String p : parameters.keySet()) {
             String filter = TableQuery.generateFilterCondition(p,
                     TableQuery.QueryComparisons.EQUAL, parameters.get(p));
             f = TableQuery.combineFilters(f, TableQuery.Operators.AND, filter);
@@ -144,7 +132,7 @@ public class ToDoRepository {
 
     private List<ToDo> toList(Iterable<ToDo.AzureToDo> iterable) {
         List<ToDo> result = new ArrayList<>();
-        for (ToDo.AzureToDo todo: iterable) {
+        for (ToDo.AzureToDo todo : iterable) {
             //System.out.println(todo);
             result.add(todo.toModel());
         }

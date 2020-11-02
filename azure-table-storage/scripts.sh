@@ -9,4 +9,3 @@ az storage table list --account-name $storage_account -o table
 az cosmosdb create -n $cosmos_account --locations regionName=$location --capabilities EnableTable -g $resource_group
 #cosmoms db 생성
 #https://github.com/azure/azure-documentdb-datamigrationtool 툴을 이용한 migration
-

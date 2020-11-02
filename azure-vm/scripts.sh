@@ -23,35 +23,35 @@ az network public-ip list -o table
 az network nsg create -g $resource_group -n $nsg1
 #네트워크 시큐리티 그룹 생성
 
-az network nic create -g $resource_group  \
+az network nic create -g $resource_group \
   -n $nic1 \
   --vnet-name $vnet \
-   --subnet $subnet  \
-   --network-security-group $nsg1 \
-   --public-ip-address $pip1
+  --subnet $subnet \
+  --network-security-group $nsg1 \
+  --public-ip-address $pip1
 #가상 네트워크 인터페이스 생성
 
 az network nic list -o table
 #가상 네트워크 인터페이스 리스
 
 az vm create -n $vm1 \
-  -g $resource_group  \
-  -l $location  \
-  --image ubuntults  \
+  -g $resource_group \
+  -l $location \
+  --image ubuntults \
   --size Standard_B1ms \
-  --nics $nic1  \
-  --admin-username $admin_username  \
-  --admin-password $admin_pw  \
+  --nics $nic1 \
+  --admin-username $admin_username \
+  --admin-password $admin_pw \
   --authentication-type ssh \
   --ssh-key-values ~/.ssh/id_rsa.pub
 #VM 생성
 
 az vm create -n $vm1 \
-  -g $resource_group  \
-  -l $location  \
-  --image ubuntults  \
+  -g $resource_group \
+  -l $location \
+  --image ubuntults \
   --size Standard_B1ms \
-  --admin-username $admin_username  \
+  --admin-username $admin_username \
   --authentication-type ssh \
   --ssh-key-values ~/.ssh/id_rsa.pub
 #VM 생성, 간단 버전

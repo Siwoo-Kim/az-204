@@ -5,13 +5,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.4.RELEASE</version>
+        <version>2.3.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.siwoo</groupId>
-    <artifactId>azure-vm</artifactId>
+    <artifactId>azure-policy</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>azure-vm</name>
+    <name>azure-policy</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
